@@ -1,0 +1,38 @@
+[project]
+name = "txtat"
+dynamic = ["version"]
+description = "Copy text from screen region to clipboard"
+authors = [
+    { name = "FloatingInt", email = "knutolaihelgesen@gmail.com" }
+]
+dependencies = [
+    "pyperclip~=1.9.0",
+    "keyboard~=0.13.5",
+    "pytesseract~=0.3.10",
+    "pyautogui~=0.9.54",
+    "opencv-python~=4.10.0.84",
+    "actus~=0.7.1",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[project.scripts]
+"main" = "txtat:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.version]
+path = "txtat/__init__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+include = ["txtat/**", "txtat.bat"]
+exclude = ["txtat/**/__pycache__"]
